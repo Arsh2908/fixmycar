@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fix My कार</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #111;
+      color: #f0f0f0;
+    }
+    nav {
+      background: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+    nav a {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: #ff6f00;
+      color: #000;
+    }
+    header {
+      background: url('https://cdn.pixabay.com/photo/2021/09/30/14/30/car-6669670_1280.jpg') center/cover no-repeat;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    header h1 {
+      color: #ff6f00;
+      font-size: 3rem;
+      text-shadow: 1px 1px 4px #000;
+    }
+    header p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+    #slider {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    #slides {
+      display: flex;
+      width: 300%;
+      animation: slide 12s infinite;
+    }
+    .slide {
+      width: 100%;
+      height: 250px;
+      position: relative;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      background: rgba(0,0,0,0.5);
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      33% { transform: translateX(-100%); }
+      66% { transform: translateX(-200%); }
+      100% { transform: translateX(0); }
+    }
+    section {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #ff6f00;
+      margin-bottom: 2rem;
+    }
+    .tiles {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .tile {
+      background: #1f1f1f;
+      padding: 1.5rem;
+      border-radius: 10px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+    .tile i {
+      font-size: 2rem;
+      color: #ff6f00;
+      margin-bottom: 1rem;
+    }
+    .chatbot-btn {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #ff6f00;
+      border: none;
+      padding: 1rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #fff;
+    }
+    .chatbox {
+      position: fixed;
+      bottom: 140px;
+      right: 20px;
+      width: 280px;
+      height: 300px;
+      background: #222;
+      display: none;
+      flex-direction: column;
+      padding: 1rem;
+      color: white;
+      border-radius: 10px;
+    }
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+    .whatsapp a {
+      background: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+    }
+    footer {
+      background: #0d0d0d;
+      padding: 1rem;
+      text-align: center;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="./ai-diagnosis.html">AI Diagnosis</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#about">Why Us</a>
+    <a href="./know-your-car.html" target="_blank">Know Your Car</a>
+    <a href="https://boodmo.com" target="_blank">Parts</a>
+  </nav>
+
+  <header id="home">
+    <h1>Fix My कार</h1>
+    <p>Book expert car service, diagnostics, and mechanics at your door.</p>
+  </header>
+
+  <div id="slider">
+    <div id="slides">
+      <div class="slide">
+        <img src="https://cdn.pixabay.com/photo/2021/02/10/08/50/car-6000113_1280.jpg">
+        <div class="slide-caption">Fast & Reliable Car Service</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.pixabay.com/photo/2017/03/27/13/56/car-2179220_1280.jpg">
+        <div class="slide-caption">Doorstep Mechanic Visit</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.pixabay.com/photo/2016/11/29/05/15/auto-1868726_1280.jpg">
+        <div class="slide-caption">Genuine Spare Parts & More</div>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="tiles">
+      <div class="tile"><i class="fas fa-tools"></i><p>Full Car Servicing</p></div>
+      <div class="tile"><i class="fas fa-car-battery"></i><p>Battery Check & Replacement</p></div>
+      <div class="tile"><i class="fas fa-car-crash"></i><p>Accident & Insurance Repairs</p></div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <h2>Customer Reviews</h2>
+    <div class="tiles">
+      <div class="tile"><strong>Ravi:</strong> Great doorstep service!</div>
+      <div class="tile"><strong>Megha:</strong> Honest mechanic and clean work.</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>Why Fix My कार?</h2>
+    <p style="text-align:center; max-width: 800px; margin:auto;">We're building India’s smartest car care platform — combining AI, doorstep repair, genuine parts, and eco-service into one experience. We aim to save time, money, and your car’s health — all at your fingertips.</p>
+  </section>
+
+  <section id="map">
+    <h2>Nearby Garages</h2>
+    <div style="text-align:center">
+      <iframe src="https://maps.google.com/maps?q=garage%20near%20me&t=&z=13&ie=UTF8&iwloc=&output=embed" width="90%" height="300" style="border:0;"></iframe>
+    </div>
+  </section>
+
+  <div class="whatsapp">
+    <a href="https://wa.me/7439217309" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <button class="chatbot-btn" onclick="toggleBot()">🤖</button>
+  <div class="chatbox" id="chatbot">
+    <strong>Bot:</strong> Hello! Ask me anything 🚘<br><br>
+    <textarea rows="6" placeholder="Type here..."></textarea>
+  </div>
+
+  <footer>
+    &copy; 2025 Fix My कार. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleBot() {
+      const bot = document.getElementById("chatbot");
+      bot.style.display = bot.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+</body>
+</html>
