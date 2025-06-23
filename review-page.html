@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fix My कार - Reviews</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0f172a;
+      color: #f0f4f8;
+    }
+    header {
+      padding: 3rem 1rem 2rem;
+      text-align: center;
+      background: linear-gradient(90deg, #1e293b, #0f172a);
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #facc15;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+    }
+    .rating-summary {
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+    .rating-summary i {
+      color: #facc15;
+    }
+    .review-container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+    .review-title {
+      font-size: 1.8rem;
+      color: #ffffff;
+      margin-bottom: 2rem;
+    }
+    .reviews {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .review-box {
+      background: #1e293b;
+      padding: 1.5rem;
+      border-radius: 10px;
+      width: 270px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .review-box h4 {
+      margin-bottom: 0.5rem;
+      color: #facc15;
+    }
+    .review-box p {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+    .review-box .stars {
+      color: #facc15;
+      margin: 0.5rem 0;
+    }
+    .review-box img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      border: 2px solid #facc15;
+    }
+    .google-btn {
+      display: inline-block;
+      background: #facc15;
+      color: #1e293b;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1.5rem;
+    }
+    footer {
+      background: #0f172a;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #94a3b8;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Customer Reviews</h1>
+    <p>Hear from real users of Fix My कार across India</p>
+  </header>
+
+  <div class="rating-summary">
+    <i class="fab fa-google"></i>
+    <span>4.8</span>
+    <span class="stars">⭐⭐⭐⭐⭐</span>
+    <span>(1,256 reviews)</span>
+  </div>
+
+  <div class="review-container">
+    <div class="review-title">See what our past guests say</div>
+    <div class="reviews">
+      <div class="review-box">
+        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
+        <h4>Ravi Sharma</h4>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>Booked AC repair in Delhi. Mechanic reached in 2 hrs. Great service!</p>
+      </div>
+      <div class="review-box">
+        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="">
+        <h4>Anjali Verma</h4>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>Used AI Diagnosis and avoided a breakdown. Super useful!</p>
+      </div>
+      <div class="review-box">
+        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="">
+        <h4>Mohammed Irfan</h4>
+        <div class="stars">⭐⭐⭐⭐</div>
+        <p>Feels like the Uber of garage services. App is smooth.</p>
+      </div>
+      <div class="review-box">
+        <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="">
+        <h4>Priya Joshi</h4>
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>High-quality parts and clean service. Loved the experience!</p>
+      </div>
+    </div>
+    <a href="#" class="google-btn">Rate us on Google</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Fix My कार. All rights reserved.
+  </footer>
+</body>
+</html>
