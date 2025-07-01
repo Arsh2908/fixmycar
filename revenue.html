@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fix My कार</title>
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #111;
+      color: #00eaff;
+      padding: 2rem;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .tile {
+      background-color: #1a1a1a;
+      margin: 1rem auto;
+      padding: 1rem;
+      width: 90%;
+      max-width: 350px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .tile:hover {
+      background-color: #222;
+    }
+    .section {
+      display: none;
+      background-color: #111;
+      padding: 1rem;
+      margin: 1rem auto;
+      border-radius: 12px;
+      max-width: 500px;
+    }
+    input, textarea, button, select {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 6px;
+      background-color: #222;
+      color: #fff;
+    }
+    button {
+      background-color: #00aaff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .footer {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin: 2rem;
+    }
+    .checkbox label {
+      display: block;
+      text-align: left;
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🇮🇳 Fix My <span style="font-family: 'Noto Sans Devanagari', sans-serif;">कार</span>
+  </header>
+
+  <div class="tile" onclick="show('diagnosis')">✅ Self Diagnosis</div>
+  <div class="tile" onclick="show('rto')">🔍 RTO Search</div>
+  <div class="tile" onclick="show('market')">🛒 Marketplace</div>
+  <div class="tile" onclick="show('services')">💼 Services</div>
+  <div class="tile" onclick="show('ads')">📢 Advertise</div>
+  <div class="tile" onclick="show('reminder')">⏰ Reminders</div>
+
+  <div id="diagnosis" class="section">
+    <h3>Self Diagnosis</h3>
+    <p>Select symptoms:</p>
+    <div class="checkbox">
+      <label><input type="checkbox" value="won't start"> Car won't start</label>
+      <label><input type="checkbox" value="dim"> Dim headlights</label>
+      <label><input type="checkbox" value="clicking"> Clicking sound</label>
+      <label><input type="checkbox" value="tire pressure"> Low tire pressure</label>
+      <label><input type="checkbox" value="temperature"> Overheating</label>
+      <label><input type="checkbox" value="squealing"> Squealing brakes</label>
+      <label><input type="checkbox" value="stall"> Engine stall</label>
+      <label><input type="checkbox" value="spongy"> Spongy brakes</label>
+    </div>
+    <button onclick="diagnose()">Diagnose</button>
+    <div id="diagnosisResult"></div>
+  </div>
+
+  <div id="rto" class="section">
+    <h3>RTO Lookup</h3>
+    <input id="rtoInput" placeholder="e.g. MH12AB1234" />
+    <button onclick="rtoSearch()">Search</button>
+    <div id="rtoResult"></div>
+  </div>
+
+  <div id="market" class="section">
+    <h3>Marketplace</h3>
+    <div class="tile">🔧 Engine Oil - ₹450 <button onclick="checkout('Engine Oil', 450)">Buy</button></div>
+    <div class="tile">🔋 Battery - ₹1200 <button onclick="checkout('Battery', 1200)">Buy</button></div>
+    <div class="tile">🛞 Tyres - ₹2000 <button onclick="checkout('Tyres', 2000)">Buy</button></div>
+    <div class="tile">🛡️ Insurance - ₹1500 <button onclick="checkout('Insurance', 1500)">Buy</button></div>
+  </div>
+
+  <div id="services" class="section">
+    <h3>Service Plans</h3>
+    <select onchange="servicePayment(this)">
+      <option value="0">Select a plan</option>
+      <option value="199">Monthly Service - ₹199</option>
+      <option value="499">Quarterly Check - ₹499</option>
+      <option value="999">Annual Maintenance - ₹999</option>
+    </select>
+    <p id="revenueNote"></p>
+  </div>
+
+  <div id="ads" class="section">
+    <h3>Advertise Your Garage</h3>
+    <input placeholder="Garage Name">
+    <textarea placeholder="Services, Contact, Location"></textarea>
+    <button onclick="alert('Submitted! We will contact you.')">Submit</button>
+  </div>
+
+  <div id="reminder" class="section">
+    <h3>Service Reminder</h3>
+    <input id="carName" placeholder="Car Name" />
+    <input type="date" id="reminderDate" />
+    <button onclick="saveReminder()">Save</button>
+    <p id="reminderSaved"></p>
+  </div>
+
+  <div id="billing" class="section">
+    <h3>Payment Page</h3>
+    <p id="billingItem"></p>
+    <p>Total Amount: ₹<span id="billingAmount"></span></p>
+    <input placeholder="Name">
+    <input placeholder="Card Number">
+    <input placeholder="Expiry Date">
+    <input placeholder="CVV">
+    <button onclick="completePayment()">Pay Now</button>
+    <p id="paymentStatus"></p>
+  </div>
+
+  <div class="footer">🇮🇳 Made in India | Fix My कार © 2025</div>
+
+  <script>
+    const problems = [
+      { issue: "Dead Battery", symptoms: ["won't start", "dim", "clicking"] },
+      { issue: "Flat Tire", symptoms: ["tire pressure"] },
+      { issue: "Overheating Engine", symptoms: ["temperature"] },
+      { issue: "Brake Issue", symptoms: ["spongy", "squealing"] },
+      { issue: "Alternator Failure", symptoms: ["dim", "stall"] }
+    ];
+
+    const rtoData = {
+      "MH12AB1234": { owner: "Rohan Deshmukh", type: "Petrol", year: 2019, city: "Pune" },
+      "DL8CAF4567": { owner: "Neha Kapoor", type: "Diesel", year: 2021, city: "Delhi" }
+    };
+
+    function show(id) {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    function diagnose() {
+      const selected = Array.from(document.querySelectorAll('input[type=checkbox]:checked')).map(cb => cb.value);
+      let result = "No issue matched.";
+      for (const p of problems) {
+        if (p.symptoms.some(s => selected.includes(s))) {
+          result = `Possible Issue: <strong>${p.issue}</strong>`;
+          break;
+        }
+      }
+      document.getElementById('diagnosisResult').innerHTML = result;
+    }
+
+    function rtoSearch() {
+      const num = document.getElementById('rtoInput').value.trim().toUpperCase();
+      const result = document.getElementById('rtoResult');
+      const car = rtoData[num];
+      result.innerHTML = car
+        ? `Owner: ${car.owner}<br>Fuel Type: ${car.type}<br>City: ${car.city}<br>Year: ${car.year}`
+        : 'No data found.';
+    }
+
+    function checkout(item, price) {
+      document.getElementById('billingItem').innerText = item;
+      document.getElementById('billingAmount').innerText = price;
+      show('billing');
+    }
+
+    function servicePayment(selectObj) {
+      const value = selectObj.value;
+      if (parseInt(value) > 0) {
+        checkout(selectObj.options[selectObj.selectedIndex].text, value);
+      }
+    }
+
+    function completePayment() {
+      document.getElementById('paymentStatus').innerText = '✅ Payment Successful! Thank you.';
+    }
+
+    function saveReminder() {
+      const car = document.getElementById('carName').value;
+      const date = document.getElementById('reminderDate').value;
+      localStorage.setItem('reminder', `${car} - ${date}`);
+      document.getElementById('reminderSaved').innerText = `Reminder saved for ${car} on ${date}`;
+    }
+  </script>
+</body>
+</html>
